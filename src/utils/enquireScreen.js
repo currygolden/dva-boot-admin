@@ -37,6 +37,7 @@ export function enquireScreen(query, cb, handlers) {
     }
   };
   enquireJS.register(query, handler);
+  // 调用返回值可以注销注册
   return _ => enquireJS.unregister(query);
 }
 

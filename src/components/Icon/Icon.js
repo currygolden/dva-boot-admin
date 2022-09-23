@@ -4,9 +4,10 @@ import classnames from 'classnames';
 import AntdIcon, { BorderOutlined } from '@ant-design/icons';
 
 /**
- * 字体图标，兼容antd的图标
+ * 字体图标，兼容antd的图标，支持自定义reactNode
  */
 class Icon extends React.Component {
+  // class组件定义props的场景
   static propTypes = {
     prefixCls: PropTypes.string,
     type: PropTypes.any.isRequired,
@@ -34,6 +35,7 @@ class Icon extends React.Component {
       spin,
       ...props
     } = this.props;
+    // 拼接classnames
     const cn = classnames(
       prefixCls,
       {

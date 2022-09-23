@@ -27,6 +27,7 @@ const { Content, Header } = Layout;
 export default class BasicLayout extends React.PureComponent {
   constructor(props) {
     super(props);
+    // 基于webStorage/store库的全局状态
     const user = $$.getStore('user', []);
     const theme = $$.getStore('theme', {
       leftSide: 'darkgrey', // 左边
@@ -41,6 +42,7 @@ export default class BasicLayout extends React.PureComponent {
         // 'tabLayout',
       ];
     }
+    // 组件属性
     this.state = {
       collapsedLeftSide: false, // 左边栏开关控制
       leftCollapsedWidth: 60, // 左边栏宽度
@@ -61,6 +63,7 @@ export default class BasicLayout extends React.PureComponent {
   componentDidMount() {
     this.checkLoginState();
 
+    // 处理移动端的兼容
     this.unregisterEnquire = enquireIsMobile(ismobile => {
       const { isMobile, theme } = this.state;
       if (isMobile !== ismobile) {
@@ -79,10 +82,11 @@ export default class BasicLayout extends React.PureComponent {
   checkLoginState() {
     const user = $$.getStore('user');
     if (!user) {
+      // 路由跳转的写法
       this.props.dispatch(routerRedux.replace('/sign/login'));
     }
   }
-
+  // 特定的场景下更新组件
   componentDidUpdate(prevProps, prevState) {
     if (
       !isEqual(this.props.location.pathname, prevProps.location.pathname) ||
@@ -104,6 +108,7 @@ export default class BasicLayout extends React.PureComponent {
       location: { pathname },
       global
     } = props || this.props;
+    console.log('props', props)
     const menu = this.getMeunMatchKeys(global.flatMenu, pathname)[0];
     return menu;
   }

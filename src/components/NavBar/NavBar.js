@@ -2,10 +2,12 @@ import React, { PureComponent } from 'react';
 import Icon from '../Icon';
 import { Popover, Badge, Avatar } from 'antd';
 import { router } from 'dva';
+// 样式方案的一种
 import cx from 'classnames';
 import './style/index.less';
 import logoImg from 'assets/images/logo.png';
 import SearchBox from './SearchBox';
+// 类似组件类从router获取，api则不是
 const { Link } = router;
 
 /**
@@ -20,7 +22,10 @@ class NavBar extends PureComponent {
     fixed: true,
     theme: '' //'bg-dark',
   };
-
+  /**
+   * @de 全屏切换 document/api
+   * 
+   */
   toggleFullScreen() {
     if (
       !document.fullscreenElement &&
@@ -63,7 +68,7 @@ class NavBar extends PureComponent {
       openSearchBox: true
     });
   };
-
+  // 跟组件渲染相关的
   render() {
     const { openSearchBox } = this.state;
     const {

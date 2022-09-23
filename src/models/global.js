@@ -11,8 +11,10 @@ export default modelEnhance({
 
   effects: {
     *getMenu({ payload }, { call, put }) {
+      console.log('start')
       const { status, data } = yield call(getMenu, payload);
       if (status) {
+        // 树形数据拍平
         const loopMenu = (menu, pitem = {}) => {
           menu.forEach(item => {
             if (pitem.path) {
@@ -24,7 +26,8 @@ export default modelEnhance({
           });
         }
         loopMenu(data);
-        
+        console.log('data', data)
+
         yield put({
           type: 'getMenuSuccess',
           payload: data,
@@ -32,7 +35,7 @@ export default modelEnhance({
       }
     },
   },
-
+  // 纯函数，修改状态
   reducers: {
     getMenuSuccess(state, { payload }) {
       return {

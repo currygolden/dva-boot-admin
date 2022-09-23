@@ -8,6 +8,9 @@ exports.addMockServer = () => config => {
     app.get('/test/get', (req, res) => {
       res.json({ get: 'response get' });
     });
+    app.get('/user/menu', (req, res) => {
+      res.json({ get: 'response get' });
+    });
   };
   return config;
 };

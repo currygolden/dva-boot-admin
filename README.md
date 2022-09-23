@@ -134,3 +134,19 @@ $ yarn build --analyze
 ![](https://ucarecdn.com/4e8c9b75-11df-4108-8437-bdb2627e3ebc/8.jpg)
 ![](https://ucarecdn.com/7831ce59-f412-4109-a75c-2b9f86b78c43/10.jpg)
 ![](https://ucarecdn.com/4cbe9623-30ef-4410-9740-9e03c2f4a84e/mobile1.gif)
+
+
+## 基建完善
+
+### 基础业务组件
+1. 基础头部导航
+### 基础工具库
+
+
+### 基建完善
+1. 构建/打包慢
+
+
+### admin常见功能
+1. 数据 mock 方案
+2. 联调代理环境配置
