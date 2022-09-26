@@ -108,8 +108,8 @@ export default class BasicLayout extends React.PureComponent {
       location: { pathname },
       global
     } = props || this.props;
-    console.log('props', props)
     const menu = this.getMeunMatchKeys(global.flatMenu, pathname)[0];
+    console.log('props', menu)
     return menu;
   }
 
@@ -129,7 +129,7 @@ export default class BasicLayout extends React.PureComponent {
         : !this.state.collapsedLeftSide;
     const collapsedRightSide =
       this.state.collapsedRightSide || !collapsedLeftSide;
-
+    // 组件内修改state
     this.setState({
       collapsedLeftSide,
       collapsedRightSide,
@@ -219,6 +219,7 @@ export default class BasicLayout extends React.PureComponent {
 
     return (
       <Layout className={classnames}>
+        {/* 顶部导航 */}
         <Header>
           <NavBar
             collapsed={collapsedLeftSide}

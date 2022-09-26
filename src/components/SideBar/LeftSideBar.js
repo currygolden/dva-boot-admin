@@ -20,6 +20,8 @@ const SubMenu = Menu.SubMenu;
 //   icon: 'setting',
 //   icon: 'http://demo.com/icon.png',
 //   icon: <Icon type="setting" />,
+
+// 支持图片和icon组件
 const getIcon = icon => {
   if (typeof icon === 'string' && icon.indexOf('http') === 0) {
     return <img src={icon} alt="icon" className={`sider-menu-item-img`} />;
@@ -41,7 +43,7 @@ class LeftSideBar extends PureComponent {
     fixed: true,
     theme: ''
   };
-
+  // 大部分属性由props提供
   constructor(props) {
     super(props);
     this.state = {
@@ -65,7 +67,7 @@ class LeftSideBar extends PureComponent {
   /**
    * 判断是否是http链接.返回 Link 或 a
    * Judge whether it is http link.return a or Link
-   * @memberof SiderMenu
+   * @memberof SiderMenu，内部链接使用router管理，外部a标签
    */
   getMenuItemPath = item => {
     const itemPath = this.conversionPath(item.path);
@@ -199,6 +201,7 @@ class LeftSideBar extends PureComponent {
     const { openKeys } = this.state;
     // if pathname can't match, use the nearest parent's key
     let selectedKeys = this.getSelectedMenuKeys();
+    console.log('selectedKeys', selectedKeys)
     // Don't show popup menu when it is been collapsed
     const menuProps = collapsed
       ? {
@@ -210,6 +213,7 @@ class LeftSideBar extends PureComponent {
         };
 
     const siderBar = (
+      /* layout容器 */
       <Sider
         className={classnames}
         width={230}
@@ -253,6 +257,7 @@ class LeftSideBar extends PureComponent {
               </div>
             </div>
           </header>
+          {/* 左侧menu组件 */}
           <Menu
             onClick={this.handleClick}
             onOpenChange={this.handleOpenChange}
